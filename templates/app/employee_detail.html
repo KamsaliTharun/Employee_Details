@@ -1,0 +1,52 @@
+{% extends 'app/dummy.html' %}
+
+{% block title %}
+    <title>Detail Page</title>
+{% endblock %}
+
+{% block body_block  %}
+
+<style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table td, table th {
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid black;
+    }
+  </style>
+
+<br><br>
+<center>
+    <h1>Details of {{empobject.EmployeeId}}</h1>
+    <br><br>
+    <table>
+        <tr style="background-color: darkcyan;">
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Department</th>
+            <th>Plant</th>
+            <th>Designation</th>
+            <th>Location</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        <tr style="background-color: rgb(220, 197, 169); color:black">
+            <td>{{empobject.EmployeeId}}</td>
+            <td>{{empobject.EmployeeName}}</td>
+            <td>{{empobject.Department}}</td>
+            <td>{{empobject.Plant}}</td>
+            <td>{{empobject.Designation}}</td>
+            <td>{{empobject.Location}}</td>
+            <td><a href="{% url 'EmployeeUpdate' pk=empobject.pk %}" class="fas fa-user nav-link fa fa-edit pr-2" style="font-size:20px"></a></td>
+            <td><a href="{% url 'Employeedelete' pk=empobject.pk %}"style="font-size:20px"class="fa">&#xf014;</a></td>
+        </tr>
+
+        
+    </table>
+</center>
+{% endblock %}

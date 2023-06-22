@@ -1,0 +1,53 @@
+{% extends 'app/dummy.html' %}
+
+{% block title %}
+    <title>List Page</title>
+{% endblock %}
+
+{% block body_block  %}
+<style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table td, table th {
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid black;
+    }
+  </style>
+  <br>
+<h1>List Of Employees</h1>
+<br>
+
+
+<table>
+
+    <tr style="background-color: darkcyan;">
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Plant</th>
+        <th>Designation</th>
+        <th>Location</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for emp in employees %}
+    <tr style="background-color: rgb(220, 197, 169); color:black" >
+        <td>{{emp.EmployeeId}}</td>
+        <td>{{emp.EmployeeName}}</td>
+        <td>{{emp.Department}}</td>
+        <td>{{emp.Plant}}</td>
+        <td>{{emp.Designation}}</td>
+        <td>{{emp.Location}}</td>
+        <td><a href="{% url 'EmployeeUpdate' pk=emp.pk %}" class="fas fa-user nav-link fa fa-edit pr-2" style="font-size:20px"></a></td>
+        <td><a href="{% url 'Employeedelete' pk=emp.pk %}"style="font-size:20px"class="fa">&#xf014;</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+    
+{% endblock %}
